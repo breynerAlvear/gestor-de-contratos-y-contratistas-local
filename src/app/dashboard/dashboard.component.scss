@@ -1,0 +1,47 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 30px;
+  color: #111827;
+}
+
+.hero p {
+  margin: 8px 0 0;
+  color: #6b7280;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card__label {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.card strong {
+  font-size: 32px;
+  color: #111827;
+}
+
+.card small {
+  color: #9ca3af;
+}
+

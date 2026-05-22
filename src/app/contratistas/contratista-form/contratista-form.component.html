@@ -1,0 +1,48 @@
+<section class="page">
+  <div class="header">
+    <div>
+      <h1>Nuevo contratista</h1>
+      <p>Registra la información básica del contratista.</p>
+    </div>
+
+    <a class="btn-secondary" routerLink="/contratistas">Volver</a>
+  </div>
+
+  <form class="form-card" [formGroup]="form" (ngSubmit)="guardar()">
+    <div class="grid">
+      <label>
+        Nombre
+        <input type="text" formControlName="nombre">
+      </label>
+
+      <label>
+        Tipo
+        <select formControlName="tipo">
+          <option value="Empresa">Empresa</option>
+          <option value="Persona natural">Persona natural</option>
+        </select>
+      </label>
+
+      <label>
+        NIT
+        <input type="text" formControlName="nit">
+      </label>
+
+      <label>
+        Estado
+        <select formControlName="estado">
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn-primary">Guardar</button>
+    </div>
+  </form>
+</section>
+<div class="error" *ngIf="form.get('nombre')?.touched && form.get('nombre')?.invalid">
+  Este campo es obligatorio.
+</div>
+

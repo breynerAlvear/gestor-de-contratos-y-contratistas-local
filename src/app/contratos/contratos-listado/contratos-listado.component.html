@@ -1,0 +1,45 @@
+<section class="page">
+  <div class="header">
+    <div>
+      <h1>Contratos</h1>
+      <p>Listado general de contratos registrados.</p>
+    </div>
+
+    <a class="btn-primary" routerLink="/contratos/nuevo">Nuevo contrato</a>
+  </div>
+
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Número</th>
+          <th>Título</th>
+          <th>Tipo</th>
+          <th>Estado</th>
+          <th>Inicio</th>
+          <th>Fin</th>
+          <th>Monto</th>
+          <th>Contratista</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of contratos$ | async">
+          <td>{{ item.contrato.numeroContrato }}</td>
+          <td>{{ item.contrato.titulo }}</td>
+          <td>{{ item.contrato.tipo }}</td>
+          <td><span class="badge">{{ item.contrato.estado }}</span></td>
+          <td>{{ item.contrato.fechaInicio | date:'dd/MM/yyyy' }}</td>
+          <td>{{ item.contrato.fechaFin | date:'dd/MM/yyyy' }}</td>
+          <td>{{ item.contrato.monto | number }}</td>
+          <td>{{ item.contratista.nombre }}</td>
+          <td>
+            <button class="btn-danger" (click)="eliminar(item.contrato.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+

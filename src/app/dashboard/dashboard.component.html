@@ -1,0 +1,26 @@
+<section class="page">
+  <div class="hero">
+    <h1>Dashboard</h1>
+    <p>Resumen general del sistema de contratos y contratistas.</p>
+  </div>
+
+  <div class="cards">
+    <article class="card">
+      <span class="card__label">Contratos</span>
+      <strong>{{ (contratos$ | async)?.length || 0 }}</strong>
+      <small>Registrados en el sistema</small>
+    </article>
+
+    <article class="card">
+      <span class="card__label">Contratistas</span>
+      <strong>{{ (contratistas$ | async)?.length || 0 }}</strong>
+      <small>Activos actualmente</small>
+    </article>
+
+  <article class="card">
+  <span class="card__label">Resumen</span>
+  <strong>{{ (contratos$ | async)?.length || 0 }} / {{ (contratistas$ | async)?.length || 0 }}</strong>
+  <small>
+    {{ (contratos$ | async)?.length || 0 }} contratos y {{ (contratistas$ | async)?.length || 0 }} contratistas registrados
+  </small>
+</article>

@@ -1,0 +1,33 @@
+<section class="page">
+  <div class="header">
+    <div>
+      <h1>Contratistas</h1>
+      <p>Empresas o personas registradas para contratar.</p>
+    </div>
+
+    <a class="btn-primary" routerLink="/contratistas/nuevo">Nuevo contratista</a>
+  </div>
+
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Tipo</th>
+          <th>NIT</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let contratista of contratistas$ | async">
+          <td>{{ contratista.nombre }}</td>
+          <td>{{ contratista.tipo }}</td>
+          <td>{{ contratista.nit }}</td>
+          <td><span class="badge">{{ contratista.estado }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
