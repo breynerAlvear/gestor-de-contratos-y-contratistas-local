@@ -1,6 +1,18 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
+export interface Contratista {
+estado: any;
+nit: any;
+tipo: any;
+  id: number;
+  nombre: string;
+  documento: string;
+  cargo: string;
+  email: string;
+  telefono: string;
+}
+
 export interface Contrato {
   id: number;
   numeroContrato: string;
@@ -12,14 +24,6 @@ export interface Contrato {
   monto: number;
 }
 
-export interface Contratista {
-  id: number;
-  nombre: string;
-  tipo: string;
-  nit: string;
-  estado: string;
-}
-
 export interface ContratoConContratista {
   contrato: Contrato;
   contratista: Contratista;
@@ -28,9 +32,7 @@ export interface ContratoConContratista {
 const KEY_CONTRATOS = 'app_contratos';
 const KEY_CONTRATISTAS = 'app_contratistas';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class AppStateService {
   private contratosSubject = new BehaviorSubject<ContratoConContratista[]>(this.loadContratos());
   private contratistasSubject = new BehaviorSubject<Contratista[]>(this.loadContratistas());
@@ -51,9 +53,7 @@ export class AppStateService {
     const raw = localStorage.getItem(KEY_CONTRATISTAS);
     if (raw) return JSON.parse(raw);
 
-    const seed: Contratista[] = [
-      { id: 1, nombre: 'Limpieza S.A.S.', tipo: 'Empresa', nit: '900123456-1', estado: 'Activo' }
-    ];
+    const seed: Contratista[] = [];
     localStorage.setItem(KEY_CONTRATISTAS, JSON.stringify(seed));
     return seed;
   }
@@ -89,5 +89,5 @@ export class AppStateService {
     this.contratistasSubject.next(actual);
     this.saveContratistas(actual);
   }
-} 
- 
+}
+

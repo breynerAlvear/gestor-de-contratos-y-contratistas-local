@@ -1,0 +1,42 @@
+<div class="page-header">
+  <div>
+    <h2>Nuevo contratista</h2>
+    <p>Registra una persona o empresa contratista en el sistema.</p>
+  </div>
+
+  <a class="btn-secondary" routerLink="/contratistas">Volver</a>
+</div>
+
+<form class="form-card" [formGroup]="form" (ngSubmit)="guardar()">
+  <div class="grid">
+    <label>
+      <span>Nombre</span>
+      <input type="text" formControlName="nombre">
+    </label>
+
+    <label>
+      <span>Documento</span>
+      <input type="text" formControlName="documento">
+    </label>
+
+    <label>
+      <span>Cargo</span>
+      <input type="text" formControlName="cargo">
+    </label>
+
+    <label>
+      <span>Email</span>
+      <input type="email" formControlName="email">
+    </label>
+
+    <label>
+      <span>Teléfono</span>
+      <input type="text" formControlName="telefono">
+    </label>
+  </div>
+
+  <div class="actions">
+    <button type="submit" class="btn-primary" [disabled]="form.invalid">Guardar</button>
+  </div>
+</form>
+

@@ -1,24 +1,53 @@
-<div class="layout">
-  <aside class="sidebar">
+<div class="app-shell">
+  <aside class="sidebar" [class.open]="sidebarOpen">
     <div class="brand">
-      <div class="brand__logo">GC</div>
+      <div class="logo">MC</div>
       <div>
-        <h1>Gestión</h1>
-        <p>Contratos y contratistas</p>
+        <h1>M&C Gestión</h1>
+        <p>Administración de contratos</p>
       </div>
     </div>
 
     <nav class="menu">
-      <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
-      <a routerLink="/contratos" routerLinkActive="active">Contratos</a>
-      <a routerLink="/contratistas" routerLinkActive="active">Contratistas</a>
-      <a routerLink="/contratistas" routerLinkActive="active">Contratistas</a>
+      <a
+        routerLink="/dashboard"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeSidebar()">
+        Dashboard
+      </a>
+
+      <a
+        routerLink="/contratistas"
+        routerLinkActive="active"
+        (click)="closeSidebar()">
+        Contratistas
+      </a>
+
+      <a
+        routerLink="/contratos"
+        routerLinkActive="active"
+        (click)="closeSidebar()">
+        Contratos
+      </a>
     </nav>
   </aside>
 
+  <div class="overlay" *ngIf="sidebarOpen" (click)="closeSidebar()"></div>
+
   <main class="content">
-    <router-outlet></router-outlet>
+    <header class="topbar">
+      <button class="menu-btn" type="button" (click)="toggleSidebar()">☰</button>
+
+      <div>
+        <h2>Sistema interno</h2>
+        <p>Panel administrativo</p>
+      </div>
+    </header>
+
+    <section class="page">
+      <router-outlet></router-outlet>
+    </section>
   </main>
 </div>
-
 

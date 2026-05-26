@@ -1,47 +1,125 @@
-.page {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+.dashboard {
+  display: grid;
+  gap: 20px;
 }
 
-.hero h1 {
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+  padding: 24px;
+  border-radius: 18px;
+}
+
+.hero h2 {
   margin: 0;
-  font-size: 30px;
-  color: #111827;
+  font-size: 28px;
 }
 
 .hero p {
   margin: 8px 0 0;
-  color: #6b7280;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.btn-primary,
+.btn-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: 0.2s ease;
+}
+
+.btn-primary {
+  background: #fff;
+  color: #1d4ed8;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
 }
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
+  align-items: stretch;
+}
+
+.card,
+.panel {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
 }
 
 .card {
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  justify-content: space-between;
+  min-height: 210px;
 }
 
-.card__label {
-  color: #6b7280;
-  font-size: 14px;
+.card span {
+  display: block;
+  color: #64748b;
+  margin-bottom: 10px;
 }
 
 .card strong {
-  font-size: 32px;
-  color: #111827;
+  display: block;
+  font-size: 34px;
+  color: #0f172a;
+  margin-bottom: 8px;
 }
 
-.card small {
-  color: #9ca3af;
+.card p,
+.panel p,
+.panel li {
+  color: #475569;
+}
+
+.btn-card {
+  margin-top: auto;
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.btn-card:hover {
+  background: #cbd5e1;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 16px;
+}
+
+.panel h3 {
+  margin-top: 0;
+  color: #0f172a;
+}
+
+.panel ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
 }
 

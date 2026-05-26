@@ -1,26 +1,50 @@
-<section class="page">
+<div class="dashboard">
   <div class="hero">
-    <h1>Dashboard</h1>
-    <p>Resumen general del sistema de contratos y contratistas.</p>
+    <div>
+      <h2>Bienvenido al sistema</h2>
+      <p>Panel de administración para gestionar contratistas y contratos.</p>
+    </div>
+
+    <a class="btn-primary" routerLink="/contratistas/nuevo">Nuevo contratista</a>
   </div>
 
   <div class="cards">
-    <article class="card">
-      <span class="card__label">Contratos</span>
-      <strong>{{ (contratos$ | async)?.length || 0 }}</strong>
-      <small>Registrados en el sistema</small>
-    </article>
-
-    <article class="card">
-      <span class="card__label">Contratistas</span>
+    <div class="card">
+      <span>Contratistas</span>
       <strong>{{ (contratistas$ | async)?.length || 0 }}</strong>
-      <small>Activos actualmente</small>
-    </article>
+      <p>Registrados en el sistema</p>
+      <a class="btn-card" routerLink="/contratistas">Ver contratistas</a>
+    </div>
 
-  <article class="card">
-  <span class="card__label">Resumen</span>
-  <strong>{{ (contratos$ | async)?.length || 0 }} / {{ (contratistas$ | async)?.length || 0 }}</strong>
-  <small>
-    {{ (contratos$ | async)?.length || 0 }} contratos y {{ (contratistas$ | async)?.length || 0 }} contratistas registrados
-  </small>
-</article>
+    <div class="card">
+      <span>Contratos</span>
+      <strong>{{ (contratos$ | async)?.length || 0 }}</strong>
+      <p>Activos en el sistema</p>
+      <a class="btn-card" routerLink="/contratos">Ver contratos</a>
+    </div>
+
+    <div class="card">
+      <span>Resumen total</span>
+      <strong>{{ ((contratistas$ | async)?.length || 0) + ((contratos$ | async)?.length || 0) }}</strong>
+      <p>Total de registros en el sistema</p>
+      <a class="btn-card" routerLink="/dashboard">Ver panel</a>
+    </div>
+  </div>
+
+  <div class="info-grid">
+    <section class="panel">
+      <h3>Qué puedes hacer</h3>
+      <ul>
+        <li>Crear contratistas.</li>
+        <li>Ver y eliminar registros.</li>
+        <li>Crear contratos y asociarlos.</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h3>Estado del sistema</h3>
+      <p>La información se guarda en el estado de la app y se muestra en tiempo real dentro del panel.</p>
+    </section>
+  </div>
+</div>
+

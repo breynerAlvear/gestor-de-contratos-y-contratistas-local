@@ -1,0 +1,52 @@
+<div class="page-header">
+  <div>
+    <h2>Nuevo contrato</h2>
+    <p>Registra un contrato en el sistema.</p>
+  </div>
+
+  <a class="btn-secondary" routerLink="/contratos">Volver</a>
+</div>
+
+<form class="form-card" [formGroup]="form" (ngSubmit)="guardar()">
+  <div class="grid">
+    <label>
+      <span>Número de contrato</span>
+      <input type="text" formControlName="numeroContrato" placeholder="Ej: C-001">
+    </label>
+
+    <label>
+      <span>Título</span>
+      <input type="text" formControlName="titulo" placeholder="Ej: Mantenimiento general">
+    </label>
+
+    <label>
+      <span>Tipo</span>
+      <input type="text" formControlName="tipo" placeholder="Ej: Prestación de servicios">
+    </label>
+
+    <label>
+      <span>Estado</span>
+      <input type="text" formControlName="estado" placeholder="Ej: Activo">
+    </label>
+
+    <label>
+      <span>Fecha inicio</span>
+      <input type="date" formControlName="fechaInicio">
+    </label>
+
+    <label>
+      <span>Fecha fin</span>
+      <input type="date" formControlName="fechaFin">
+    </label>
+
+    <label>
+      <span>Monto</span>
+      <input type="number" formControlName="monto" placeholder="Ej: 1500000">
+    </label>
+  </div>
+
+  <div class="actions">
+    <button type="submit" class="btn-primary" [disabled]="form.invalid">Guardar</button>
+  </div>
+</form>
+

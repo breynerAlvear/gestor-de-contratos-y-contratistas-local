@@ -1,39 +1,24 @@
 import { Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
-
-
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ContratistasListadoComponent } from './contratistas/contratistas-listado/contratistas-listado.component';
+import { ContratistasFormComponent } from './contratistas/contratistas-form/contratistas-form.component';
+import { ContratosListadoComponent } from './contratos/contratos-listado/contratos-listado.component';
+import { ContratosFormComponent } from './contratos/contratos-form/contratos-form.component'; 
 
 export const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
     children: [
-      {
-        path: 'dashboard',
-        loadComponent: () =>
-          import('./dashboard/dashboard.component').then(m => m.DashboardComponent)
-      },
-      {
-    path: 'contratos',
-    loadComponent: () =>
-      import('./contratos/contratos-listado/contratos-listado.component').then(m => m.ContratosListadoComponent)
-      },
-      {
-   path: 'contratos/nuevo',
-   loadComponent: () =>
-     import('./contratos/contrato-form/contrato-form.component').then(m => m.ContratoFormComponent)
-      },
-      {
-   path: 'contratistas',
-   loadComponent: () =>
-     import('./contratistas/contratistas-listado/contratistas-listado.component').then(m => m.ContratistasListadoComponent)
-      },
-      {
-   path: 'contratistas/nuevo',
-   loadComponent: () =>
-     import('./contratistas/contratista-form/contratista-form.component').then(m => m.ContratistaFormComponent)
-      }
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'contratistas', component: ContratistasListadoComponent },
+      { path: 'contratistas/nuevo', component: ContratistasFormComponent },
+      { path: 'contratos', component: ContratosListadoComponent },
+      { path: 'contratos/nuevo', component: ContratosFormComponent }
     ]
-  }
+  },
+  { path: '**', redirectTo: 'dashboard' }
 ];
 

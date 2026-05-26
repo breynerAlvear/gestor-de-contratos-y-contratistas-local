@@ -1,33 +1,43 @@
-<section class="page">
-  <div class="header">
-    <div>
-      <h1>Contratistas</h1>
-      <p>Empresas o personas registradas para contratar.</p>
-    </div>
-
-    <a class="btn-primary" routerLink="/contratistas/nuevo">Nuevo contratista</a>
+<div class="page-header">
+  <div>
+    <h2>Contratistas</h2>
+    <p>Gestiona los contratistas registrados en el sistema.</p>
   </div>
 
-  <div class="table-card">
-    <table>
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Tipo</th>
-          <th>NIT</th>
-          <th>Estado</th>
-        </tr>
-      </thead>
+  <a class="btn-primary" routerLink="/contratistas/nuevo">Nuevo contratista</a>
+</div>
 
-      <tbody>
-        <tr *ngFor="let contratista of contratistas$ | async">
-          <td>{{ contratista.nombre }}</td>
-          <td>{{ contratista.tipo }}</td>
-          <td>{{ contratista.nit }}</td>
-          <td><span class="badge">{{ contratista.estado }}</span></td>
-        </tr>
-      </tbody>
-    </table>
+<div class="table-card">
+  <table *ngIf="(contratistas$ | async) as contratistas">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Documento</th>
+        <th>Cargo</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let contratista of contratistas">
+        <td>{{ contratista.nombre }}</td>
+        <td>{{ contratista.documento }}</td>
+        <td>{{ contratista.cargo }}</td>
+        <td>{{ contratista.email }}</td>
+        <td>{{ contratista.telefono }}</td>
+        <td>
+          <button type="button" class="btn-danger" (click)="eliminar(contratista.id)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="empty-state" *ngIf="(contratistas$ | async)?.length === 0">
+    No hay contratistas registrados.
   </div>
-</section>
+</div>
 

@@ -1,45 +1,48 @@
-<section class="page">
-  <div class="header">
-    <div>
-      <h1>Contratos</h1>
-      <p>Listado general de contratos registrados.</p>
-    </div>
-
-    <a class="btn-primary" routerLink="/contratos/nuevo">Nuevo contrato</a>
+<div class="page-header">
+  <div>
+    <h2>Contratos</h2>
+    <p>Gestiona los contratos registrados en el sistema.</p>
   </div>
 
-  <div class="table-card">
-    <table>
-      <thead>
-        <tr>
-          <th>Número</th>
-          <th>Título</th>
-          <th>Tipo</th>
-          <th>Estado</th>
-          <th>Inicio</th>
-          <th>Fin</th>
-          <th>Monto</th>
-          <th>Contratista</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
+  <a class="btn-primary" routerLink="/contratos/nuevo">Nuevo contrato</a>
+</div>
 
-      <tbody>
-        <tr *ngFor="let item of contratos$ | async">
-          <td>{{ item.contrato.numeroContrato }}</td>
-          <td>{{ item.contrato.titulo }}</td>
-          <td>{{ item.contrato.tipo }}</td>
-          <td><span class="badge">{{ item.contrato.estado }}</span></td>
-          <td>{{ item.contrato.fechaInicio | date:'dd/MM/yyyy' }}</td>
-          <td>{{ item.contrato.fechaFin | date:'dd/MM/yyyy' }}</td>
-          <td>{{ item.contrato.monto | number }}</td>
-          <td>{{ item.contratista.nombre }}</td>
-          <td>
-            <button class="btn-danger" (click)="eliminar(item.contrato.id)">Eliminar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="table-card">
+  <table *ngIf="(contratos$ | async) as contratos">
+    <thead>
+      <tr>
+        <th>Número</th>
+        <th>Título</th>
+        <th>Tipo</th>
+        <th>Estado</th>
+        <th>Fecha inicio</th>
+        <th>Fecha fin</th>
+        <th>Monto</th>
+        <th>Contratista</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of contratos">
+        <td>{{ item.contrato.numeroContrato }}</td>
+        <td>{{ item.contrato.titulo }}</td>
+        <td>{{ item.contrato.tipo }}</td>
+        <td><span class="badge">{{ item.contrato.estado }}</span></td>
+        <td>{{ item.contrato.fechaInicio }}</td>
+        <td>{{ item.contrato.fechaFin }}</td>
+        <td>{{ item.contrato.monto }}</td>
+        <td>{{ item.contratista.nombre }}</td>
+        <td>
+          <button type="button" class="btn-danger" (click)="eliminar(item.contrato.id)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="empty-state" *ngIf="(contratos$ | async)?.length === 0">
+    No hay contratos registrados.
   </div>
-</section>
-
+</div>

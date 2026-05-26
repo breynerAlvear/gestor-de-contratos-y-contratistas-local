@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AppStateService } from '../../data/app-state.service';
+import { AppStateService, Contratista } from '../../data/app-state.service';
 
 @Component({
   selector: 'app-contratistas-listado',
@@ -13,5 +13,12 @@ import { AppStateService } from '../../data/app-state.service';
 export class ContratistasListadoComponent {
   private state = inject(AppStateService);
   contratistas$ = this.state.contratistas$;
-}
 
+  eliminar(id: number): void {
+    this.state.removeContratista(id);
+  }
+
+  trackById(_: number, item: Contratista): number {
+    return item.id;
+  }
+}

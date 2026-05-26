@@ -1,70 +1,144 @@
-.layout {
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.app-shell {
   display: flex;
   min-height: 100vh;
 }
 
 .sidebar {
-  width: 260px;
-  background: linear-gradient(180deg, #111827 0%, #1f2937 100%);
-  color: white;
-  padding: 24px 18px;
-  display: flex;
-  flex-direction: column;
+  width: 280px;
+  background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+  color: #fff;
+  padding: 24px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   margin-bottom: 28px;
 }
 
-.brand__logo {
-  width: 46px;
-  height: 46px;
+.logo {
+  width: 48px;
+  height: 48px;
   border-radius: 14px;
   background: #2563eb;
   display: grid;
   place-items: center;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+  font-weight: 800;
 }
 
 .brand h1 {
-  margin: 0;
   font-size: 18px;
+  margin: 0;
 }
 
 .brand p {
-  margin: 4px 0 0;
+  margin: 2px 0 0;
   font-size: 13px;
   color: #cbd5e1;
 }
 
 .menu {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 10px;
 }
 
 .menu a {
-  color: #e5e7eb;
   text-decoration: none;
+  color: #cbd5e1;
   padding: 12px 14px;
-  border-radius: 10px;
-  transition: 0.2s ease;
-  font-weight: 500;
+  border-radius: 12px;
+  transition: 0.2s;
 }
 
-.menu a:hover,
-.menu a.active {
-  background: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
+.menu a.active,
+.menu a:hover {
+  background: rgba(37, 99, 235, 0.18);
+  color: #fff;
 }
 
 .content {
   flex: 1;
-  padding: 28px;
-  background: #f3f4f6;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.topbar h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.topbar p {
+  margin: 2px 0 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.menu-btn {
+  display: none;
+  border: none;
+  background: #e2e8f0;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  font-size: 20px;
+}
+
+.page {
+  padding: 24px;
+}
+
+.overlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: -100%;
+    z-index: 20;
+    transition: left 0.25s ease;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  .menu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    z-index: 10;
+  }
+
+  .page {
+    padding: 16px;
+  }
 }
 
